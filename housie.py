@@ -91,14 +91,30 @@ calling = (("1","Lone ranger","Buttered scone","Top of the house number 1","Son 
 ("89","All but one","Nearly there"),
 ("90","Top of the house","End of the line","As far as we go"))
 numbers = []
+
+def unique(list1):
+
+    # intilize a null list
+    unique_list = []
+
+    # traverse for all elements
+    for x in list1:
+        # check if exists in unique_list or not
+        if x not in unique_list:
+            unique_list.append(x)
+    return unique_list
+
 random.seed()
 while len(numbers) < 90:
     inp = raw_input("Press enter for next number")
     if inp != "next":
         continue
-    chosen = random.randrange(90)
-    if chosen not in numbers:
-        print chosen+1, calling[chosen][1]
-        numbers.append(chosen)
-        print numbers
+    random_number = random.randrange(90)
+    chosen = random_number + 1
+    while chosen in numbers:
+        random_number = random.randrange(90)
+        chosen = random_number + 1
+    print chosen, calling[random_number][1]
+    numbers.append(chosen)
+    print numbers
 
