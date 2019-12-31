@@ -114,7 +114,13 @@ while len(numbers) < 90:
     while chosen in numbers:
         random_number = random.randrange(90)
         chosen = random_number + 1
-    print chosen, calling[random_number][1]
+    message = calling[random_number][1]
+    if len(calling[random_number]) > 2 and bool(random.getrandbits(1)):
+        message = calling[random_number][2]
+    if len(calling[random_number]) > 3 and bool(random.getrandbits(1)):
+        message = calling[random_number][3]
+    print chosen, message
     numbers.append(chosen)
+    numbers.sort()
     print numbers
 
